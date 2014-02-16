@@ -16,11 +16,14 @@ function e2c($S){
 }
 function get($url){
   $R = file_get_contents($url);
+  $R = str_replace("[","",$R);
+  $R = str_replace("]","",$R);
   $R = str_replace(",,,,",",",$R);
   $R = str_replace(",,,",",",$R);
   $R = str_replace(",,",",",$R);
+  $R = "[$R]";
   $R = json_decode($R);
-  $R = $R[0][0][0];
+  $R = "$R[4], $R[0], $R[5], $R[6]";
   return $R;
 }
 function is_en($str){
